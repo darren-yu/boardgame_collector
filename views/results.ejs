@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+
+    <div class="results col-md-12 col-sm-12 text-left wrapper">
+        <h3>Your search results returned the following..</h3>
+        <% content.forEach(function(element, indexOfArray) { %>
+            <% if(element.type == 'boardgame') { %>
+                <li><%= element.type + " / " +
+                element.name.value + " / "%><a href="/games/<%=element.id%>"><%=element.id%></a></li>
+
+            <% } %>
+        <% }) %>
+        <% if(content.length < 1) { %>
+        <em>No game found</em>
+        <% } %>
+    </div>
+
+
+
+<% include partials/footer.ejs %>
+

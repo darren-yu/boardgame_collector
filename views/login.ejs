@@ -1,0 +1,17 @@
+<% include partials/header.ejs %>
+
+
+        <div class="col-md-12 wrapper">
+            <h3>Login</h3>
+            <br>
+            <form class="form" method="post" action="/auth/login">
+            <input type="text" class="form-control" placeholder="Enter your e-mail" name="email" value='darren@darren.com'>
+            <br><br>
+            <input type="password" class="form-control" placeholder="Enter your password" name="password" value='testing'>
+            <br><br>
+            <input type="submit" class="btn btn-primary" value="Log Me In">
+            </form>
+        </div>
+
+
+<% include partials/footer.ejs %>

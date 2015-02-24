@@ -1,0 +1,48 @@
+<% include partials/header.ejs %>
+
+<div class="added col-md-12 col-sm-12 text-left wrapper">
+
+      <% if (user) { %>
+      <h4>Hello, <b><%= typeof user.fullName === 'string' ? user.fullName : 'Unknown' %></b>.</h4>
+      <% } %>
+      <hr>
+      <h3>Your Game Collection</h3>
+
+      <table class="table table-striped" border="4">
+
+            <tr>
+            <th>Title</th>
+            <th>Game ID</th>
+            <th></th>
+            <th></th>
+            </tr>
+
+      <% allData.forEach(function(element, indexOfArray) { %>
+            <tr>
+                  <td>
+                        <%= element.title %>
+                  </td>
+
+                  <td>
+                        <%= element.game_id%>
+                  </td>
+
+                  <td>
+                        <a href="/games/<%=element.game_id%>" class="btn btn-primary btn-sm">More Info</a>
+                  </td>
+
+                  <td>
+                        <!-- ajax delete button  -->
+                        <a href="#" data-myparam="<%=element.id%>" class="btn btn-danger btn-sm deleteAdded">Delete</a>
+                  </td>
+
+            </tr>
+      <% }) %>
+
+      </table>
+
+
+</div>
+
+
+<% include partials/footer.ejs %>

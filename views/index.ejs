@@ -1,0 +1,26 @@
+<% include partials/header.ejs  %>
+
+    <% if (!user) { %>
+    <div class="col-md-12 text-center text-block wrapper">
+        <img class="gameImage" src="/images/meeples.jpeg">
+        <h3>Welcome</h3>
+        <hr>
+        <h4><b>Boardgame Collector</b> is a web application ...
+        </h4>
+        <hr>
+    </div>
+    <% } %>
+
+    <% if(user) { %>
+    <div class="home col-md-12 col-sm-12 text-left">
+        <form action="/results" method="get">
+            <div class="form-group">
+                <label for="form-control">Title Search</label>
+                <input class="form-control" type="text" name="title" placeholder="Enter Title">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+    </div>
+    <% } %>
+
+<% include partials/footer.ejs %>
