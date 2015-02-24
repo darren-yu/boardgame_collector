@@ -1,18 +1,57 @@
 <% include partials/header.ejs %>
 
+    <div class="col-md-12 col-sm-12 wrapper text-block">
+        <ul>
+            <h4>
+                <li>
+                    Click the Game ID button for more information regarding the title and also the add button.
+                </li>
+            </h4>
+        </ul>
+    </div>
 
-    <div class="results col-md-12 col-sm-12 text-left wrapper">
+    <div class="col-md-12 col-sm-12 wrapper text-block table-responsive">
         <h3>Your search results returned the following..</h3>
+        <table class="table table-striped" border="4">
+
+            <tr>
+            <th>Title</th>
+            <th>Year Published</th>
+            <th>Type</th>
+            <th>Game ID</th>
+            </tr>
         <% content.forEach(function(element, indexOfArray) { %>
             <% if(element.type == 'boardgame') { %>
-                <li><%= element.type + " / " +
-                element.name.value + " / "%><a href="/games/<%=element.id%>"><%=element.id%></a></li>
+                <tr>
+                    <td>
+                        <%=element.name.value%>
+                    </td>
+
+                    <td>
+                        <%=element.yearpublished.value%>
+                    </td>
+
+                    <td>
+                        <%=element.type%>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-primary" href="/games/<%=element.id%>"><%=element.id%></a>
+                    </td>
+
+                </tr>
+
 
             <% } %>
         <% }) %>
+        </table>
+
+
         <% if(content.length < 1) { %>
-        <em>No game found</em>
+        <h4><em>No game(s) found</em></h4>
         <% } %>
+
+
     </div>
 
 

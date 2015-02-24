@@ -1,13 +1,25 @@
 <% include partials/header.ejs %>
 
-<div class="added col-md-12 col-sm-12 text-left wrapper">
+<div class="added col-md-12 col-sm-12 text-block wrapper">
 
       <% if (user) { %>
-      <h4>Hello, <b><%= typeof user.fullName === 'string' ? user.fullName : 'Unknown' %></b>.</h4>
+      <h4>Welcome, <b><%= typeof user.fullName === 'string' ? user.fullName : 'Unknown' %></b></h4>
       <% } %>
       <hr>
-      <h3>Your Game Collection</h3>
+      <ul>
+      <h4>
+      <li>Click 'New Search' in the navigation bar to perform a game search to add into your collection.</li>
+      <br>
+      <li>Can't decide what game to play from your collection? Click the 'Random Game Choice' in the navigation bar
+      for a random game from your collection.</li>
+      </h4>
+      </ul>
+      <hr>
+</div>
 
+
+<div class="added col-md-12 col-sm-12 text-block wrapper table-responsive">
+      <h3>Your Game Collection</h3>
       <table class="table table-striped" border="4">
 
             <tr>
@@ -32,7 +44,6 @@
                   </td>
 
                   <td>
-                        <!-- ajax delete button  -->
                         <a href="#" data-myparam="<%=element.id%>" class="btn btn-danger btn-sm deleteAdded">Delete</a>
                   </td>
 
@@ -40,9 +51,9 @@
       <% }) %>
 
       </table>
-
-
 </div>
+
+
 
 
 <% include partials/footer.ejs %>

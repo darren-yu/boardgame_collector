@@ -67,7 +67,7 @@ app.post('/auth/signup', function(req,res) {
         },
         defaults: {
             'email':req.body.email,
-            'fullName': req.body.fullName,
+            'fullName': req.body.fullName.toUpperCase(),
             'password': req.body.password
         }
     })
@@ -226,29 +226,22 @@ app.post('/added', function(req,res) {
 
     if(user) {
 
-            db.game.findOrCreate({
-                where:{
-                    'game_id':req.body.game_id,
-                    'userId':user.id
-                },
-                defaults:{
-                    'game_id':req.body.game_id,
-                    'title':req.body.title,
-                    'userId':user.id
-                },
-            }).spread(function(gameInfo,created){
-                console.log('found or created',gameInfo,created);
-                res.send({'data':gameInfo,'created':created});
-            }).catch(function(err) {
-                if(err) throw err;
-            });
-
-
-
-
-
-
-
+        db.game.findOrCreate({
+            where:{
+                'game_id':req.body.game_id,
+                'userId':user.id
+            },
+            defaults:{
+                'game_id':req.body.game_id,
+                'title':req.body.title,
+                'userId':user.id
+            },
+        }).spread(function(gameInfo,created){
+            console.log('found or created',gameInfo,created);
+            res.send({'data':gameInfo,'created':created});
+        }).catch(function(err) {
+            if(err) throw err;
+        });
 
 
     }
@@ -275,6 +268,24 @@ app.get('/added', function(req,res) {
         res.redirect('/auth/login');
     }
 
+});
+
+
+app.get('/random/game', function(req,res) {
+    var user = req.getUser();
+
+    if(user) {
+        db.game.find({where:{'userId':user.id},order:'random()',limit:20}).then(function(games){
+
+            // res.send(games)
+
+            res.render('gameselector',{'allGames':games});
+
+        });
+    }
+    else {
+        res.redirect('/auth/login');
+    }
 });
 
 

@@ -1,16 +1,18 @@
 <% include partials/header.ejs %>
 
 
-    <div class="col-md-6 col-sm-6 text-left wrapper">
+    <div class="col-md-6 col-sm-6 text-left text-block wrapper center">
 
 
 
 
-            <!-- passing through to AJAX add button -->
+
             <% if(!userHasGame) { %>
-            <a href="#" data-title="<%=title%>" data-gameid="<%=gameId%>" class="btn btn-primary btn-sm addButton">+</a>
 
-            <a class="btn btn-primary btn-sm" href="/results?title=<%=previousSearch%>">&larr;Back to search results</a>
+            <!-- <a class="btn btn-primary btn-sm" href="/results?title=<%=previousSearch%>">&larr;Back to search results</a> -->
+
+            <a class="btn btn-primary btn-sm" href="/results?title=<%=previousSearch%>"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> search results</a>
+            <a href="#" data-title="<%=title%>" data-gameid="<%=gameId%>" class="btn btn-primary btn-sm addButton">+</a>
             <% } %>
 
             <hr>
@@ -30,9 +32,13 @@
             <p>Maximum players: <%=maxPlayers%></p>
             <br>
             <hr>
-            <img src=<%=thumbnail%>>
+            <p>Boardgame Image:
+            <br>
+            <br>
+            <img src=<%=thumbnail%>></p>
 
     </div>
+
 
 
 
