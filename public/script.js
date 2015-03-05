@@ -45,24 +45,5 @@ $(function(){
 
 
 
-    // var loopCount=0;
-    // var myInterval = setInterval(function(){
-
-    //     $('.randGame').hide();
-
-    //     var rand = Math.floor($('.randGame').length * Math.random());
-
-    //     $('.randGame').eq(rand).show();
-
-    //     loopCount += 1;
-    //     if(loopCount > 40){
-    //         clearInterval(myInterval);
-    //     }
-
-    // },50)
-
-
-
-
 
 });

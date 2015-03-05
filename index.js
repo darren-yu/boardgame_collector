@@ -276,9 +276,7 @@ app.get('/random/game', function(req,res) {
 
     if(user) {
         db.game.find({where:{'userId':user.id},order:'random()',limit:20}).then(function(games){
-
             // res.send(games)
-
             res.render('gameselector',{'allGames':games});
 
         });
@@ -320,7 +318,6 @@ app.use(function(req,res) {
     res.status(404);
     res.render('error404');
 });
-
 
 
 
